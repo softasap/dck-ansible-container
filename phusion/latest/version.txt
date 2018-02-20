@@ -1,3 +1,0 @@
-repository=ansible-container
-release=0.0.1
-prefix=phusion-latest-

@@ -9,8 +9,17 @@ function _getRelease() {
 }
 
 function _getPrefix() {
-        awk -F= '/prefix/{print $2}' version.txt
+        awk -F= '/prefix/{print $2}' version.txt  | envsubst
 }
+
+function _getImageOSDistro() {
+        awk -F= '/ansible_distribution=/{print $2}' version.txt
+}
+
+function _getImageOSDistroTag() {
+        awk -F= '/ansible_distribution_version=/{print $2}' version.txt
+}
+
 
 function getVersion() {
 	result=$(_getRelease)
@@ -27,3 +36,16 @@ function getRepositoryOr() {
         echo ${result-$1}
 }
 
+function getAnsibleContainerVersion() {
+        echo 0.9.2
+}
+
+function getImageOSDistro() {
+        result=$(_getImageOSDistro)
+        echo $result
+}
+
+function getImageOSDistroTag() {
+        result=$(_getImageOSDistroTag)
+        echo $result
+}

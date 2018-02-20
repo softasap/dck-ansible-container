@@ -1,4 +1,4 @@
-FROM softasap/alpine:python-2.7-35-0.0.1
+FROM softasap/alpine:python-2.7-36-0.0.1
 
 ENV ANSIBLE_CONTAINER=1
 ENV LANG=C.UTF-8
